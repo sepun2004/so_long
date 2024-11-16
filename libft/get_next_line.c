@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:05:27 by sepun             #+#    #+#             */
-/*   Updated: 2024/07/05 14:20:59 by sepun            ###   ########.fr       */
+/*   Updated: 2024/07/05 14:20:39 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*the_rest_in_the_new_line(char *next)
 {
@@ -94,24 +94,24 @@ char	*read_fd_n(int fd, char *next)
 char	*get_next_line(int fd)
 {
 	char		*final;
-	static char	*next[1024];
+	static char	*next;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		free (next[fd]);
-		next[fd] = NULL;
+		free (next);
+		next = NULL;
 		return (NULL);
 	}
-	next[fd] = read_fd_n(fd, next[fd]);
-	if (!next[fd])
+	next = read_fd_n(fd, next);
+	if (!next)
 		return (NULL);
-	final = make_line(next[fd]);
+	final = make_line(next);
 	if (!final)
 	{
-		free(next[fd]);
-		next[fd] = NULL;
+		free(next);
+		next = NULL;
 		return (NULL);
 	}
-	next[fd] = the_rest_in_the_new_line(next[fd]);
+	next = the_rest_in_the_new_line(next);
 	return (final);
 }

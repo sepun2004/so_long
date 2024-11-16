@@ -6,11 +6,11 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/06 10:28:07 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/16 15:48:45 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../Include/so_long.h"
 
 int ft_check_map(char **argv)
 {

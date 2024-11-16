@@ -6,12 +6,12 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:11 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/06 10:53:05 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/16 15:48:33 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <stdio.h> 
-#include "../include/so_long.h"
+#include "../Include/so_long.h"
 
 int main(int argc, char **argv)
 {

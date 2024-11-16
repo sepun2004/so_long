@@ -3,39 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sepun <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:35:04 by sepun             #+#    #+#             */
-/*   Updated: 2023/11/16 15:34:32 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/16 15:52:20 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
+	int		size_s1;
+	int		size_s2;
 	char	*str;
-	int		j;
 	int		i;
+	int		j;
 
-	if (s1 && s2)
-	{
-		str = (char *)malloc(sizeof(char)
-				* (ft_strlen(s1) + ft_strlen(s2) + 1));
-		if (str == 0)
-			return (NULL);
-		j = 0;
-		i = 0;
-		while (s1[j])
-		{
-			str[j] = s1 [j];
-			j++;
-		}
-		while (s2[i])
-		{
-			str[j++] = s2 [i++];
-		}
-		str[j] = '\0';
-		return (str);
-	}
-	return (NULL);
+	size_s1 = ft_strlen(s1);
+	size_s2 = ft_strlen(s2);
+	str = malloc(size_s1 + size_s2 + 1);
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < size_s1)
+		str[i++] = s1[j++];
+	j = 0;
+	while (j < size_s2)
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }
