@@ -9,7 +9,8 @@
 /*   Updated: 2024/02/07 11:41:12 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
+#include "../libft.h"
 
 int	ft_print_hexamodificado(unsigned long long n)
 {

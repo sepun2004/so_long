@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:32:59 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/16 15:55:27 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/16 16:16:21 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+
 
 /*typedef struct
 {
@@ -89,4 +91,21 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 // get_next_line.c
 char			*get_next_line(int fd);
+
+// PRINTF
+int				ft_print_hexamodificado(unsigned long long n);
+int				ft_putpointer(unsigned long long n);
+//ft_printf_hex
+int				ft_puthex(unsigned long n, char c);
+//ft_printf_put_nbr
+int				ft_putnbr(int n);
+//ft_printf_str_char
+int				ft_putchar(char argument);
+int				ft_putstr(char *argument);
+//ft_printf
+int				ft_printf(char const *str, ...);
+int				ft_select_type(va_list argument, char c);
+//ft_putnbr_unsinged
+int				ft_putnbr_unsinged(unsigned int n);
+
 #endif

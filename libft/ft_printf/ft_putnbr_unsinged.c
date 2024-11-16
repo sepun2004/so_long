@@ -6,11 +6,11 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:57:58 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/06 10:19:39 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/16 16:15:49 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../libft.h"
 
 int	ft_putnbr_unsinged(unsigned int n)
 {

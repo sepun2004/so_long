@@ -12,7 +12,16 @@ CFLAGS = -Wall -Werror -Wextra
 
 INCLUDE = libft.h 
 
-SRC = ft_isalpha.c \
+PRINTF = ft_printf_hex.c \
+	ft_printf_pointer.c \
+	ft_printf_put_nbr.c \
+	ft_printf_str_char.c \
+	ft_printf.c \
+	ft_putnbr_unsinged.c \
+
+GNL_SRC = get_next_line.c \
+
+LIBFT_SRC = ft_isalpha.c \
 	   ft_isdigit.c \
 	   ft_isalnum.c \
 	   ft_isascii.c \
@@ -58,24 +67,27 @@ BONUSSRC = ft_lstnew_bonus.c \
 		   ft_lstiter_bonus.c \
 		   ft_lstmap_bonus.c \
 
+PRINTF_SRC = $(addprefix ft_printf/, $(PRINTF))
 
+SRC = $(LIBFT_SRC) $(PRINTF_SRC) $(GNL_SRC) $(BONUSSRC)
 
-BONUSOBJ = $(BONUSSRC:.c=.o)
+# BONUSOBJ = $(BONUSSRC:.c=.o)
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
+	@echo "done!!"
 
 $(NAME): $(OBJ) $(INCLUDE)
 	$(LIB) $(NAME) $(OBJ)
 
+# .bonus: $(BONUSOBJ) $(INCLUDE)
+# 	$(LIB) $(NAME) $(BONUSOBJ)
+# 	@touch .bonus
 
-.bonus: $(BONUSOBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(BONUSOBJ)
-	@touch .bonus
+# bonus: .bonus
+# 	@echo "bonus done!!"
 
-bonus: .bonus
-	@echo "bonus done!!"
 $.o : %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
 
