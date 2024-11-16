@@ -3,29 +3,27 @@ RED = \033[0;31m
 NC = \033[0m
 CURRENT_FILE = 0
 TOTAL_FILES = $(words $(SRC))
-NAME = push_swap
+NAME = so_long
 
 CC = gcc -g3
 CFLAGS = -Wall -Werror -Wextra 
 
 RM = rm -f
 
-SRC = ./source/so_long.c\
-		./source/check_map.c\
-	  
+SOURCES =	so_long.c\
+			check_map.c\
+
+SRCS = $(addprefix source/, $(SOURCES))
+
+SRC = $(SRCS)
 
 OBJ = $(SRC:.c=.o)
 
 all: show_progress $(NAME)
 
 $(NAME): $(OBJ)
-	@make bonus -s -C libft
 	@make -s -C libft
-# @make bonus -s -C ft_printf
-	@make -s -C ft_printf
-# @$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft -lft
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L ../libft/libft -lft
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L ../ft_printf/ft_printf -lft
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft -lft
 	@echo "$(GREEN)It has been compiled, have a nice day.👍$(NC)";
 
 %.o: %.c
@@ -47,13 +45,11 @@ git:
 clean: 
 	@$(RM) $(OBJ)
 	@make  clean -s -C libft
-	@make  clean -s -C ft_printf
 
 fclean: clean
 # rm -f $(NAME)
 	@rm -f $(NAME)
 	@make fclean -s -C libft
-	@make fclean -s -C ft_printf
 	@echo "$(RED)Full Cleaning...$(NC)"
 	@echo "$(RED)Full Cleaned!$(NC)"
 
