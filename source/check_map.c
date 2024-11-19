@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/16 18:36:21 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/19 18:02:58 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int ft_check_long_map(char **argv)
 	char *line;
 	
 	long_map = 0;
+	long_map2 = 0;
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -50,20 +51,21 @@ int ft_check_long_map(char **argv)
 			// line[long_map - 1] = '\0';
 			long_map--;
 		}
-		line = get_next_line(fd);
-		long_map2 = ft_strlen(line);
-		if(line[long_map2 - 1] == '\n')
-		{
-			// line[long_map2 - 1] = '\0';
-			long_map2--;
-		}
+		// line = get_next_line(fd);
+		// long_map2 = ft_strlen(line);
+		// if(line[long_map2 - 1] == '\n')
+		// {
+		// 	// line[long_map2 - 1] = '\0';
+		// 	long_map2--;
+		// }
 		printf("long_map es %d\n", long_map);
 		printf("line es %d\n", long_map2);
-		if (long_map != long_map2)
+		if (long_map != long_map2 && long_map2 != 0 )
 		{
 			printf("No es un mapa valido\n");
 			return (-1);
 		}
+		long_map2 = long_map;
 		i++;
 	}
 	return (0);

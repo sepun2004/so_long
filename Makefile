@@ -10,6 +10,8 @@ CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -f
 
+# LIBMLX	= ../MLX42/lib/MLX42
+
 SOURCES =	so_long.c\
 			check_map.c\
 
@@ -21,10 +23,14 @@ OBJ = $(SRC:.c=.o)
 
 all: show_progress $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):  $(OBJ)
 	@make -s -C libft
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft -lft
 	@echo "$(GREEN)It has been compiled, have a nice day.👍$(NC)";
+
+# libmlx:
+# 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
 
 %.o: %.c
 	$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
