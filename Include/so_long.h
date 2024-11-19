@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:00 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/16 17:16:34 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/19 20:51:14 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int ft_check_map(char **argv);
 int ft_check_long_map(char **argv);
 int ft_read_map(char **argv);
+int	ft_check_border(char **argv);
 // int ft_count_elements(char **argv);
 int main(int argc, char **argv);
 
