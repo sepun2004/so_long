@@ -6,40 +6,47 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/21 17:00:18 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/21 20:21:14 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/so_long.h"
 
-int ft_check_map(char **argv)
+void	print_map(char **map)
+{
+	int i;
+
+	i = -1;
+	while (map[++i] != NULL)
+		ft_printf("%s\n", map[i]);
+}
+
+int ft_check_map(t_data *data, char **argv)
 {
 	int fd;
-
+	char *line;
+	char *new_line;
+	
+	new_line = ft_strdup("");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-	{
-		printf("dio error en open\n");
 		return (-1);
-	}
-    if (ft_read_map(fd) == -1)
-    {
-		printf("dio error en ft_read_map\n");
-        return (-1);
-    }
-	if (ft_check_long_map(argv) == -1)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		printf("dio error en ft_check_long_map\n");
-		return (-1);
+		new_line = ft_strjoin(new_line, line);
+		free(line);
+		line = get_next_line(fd);
 	}
-	if (ft_check_border(argv) == -1)
-	{
-		printf("dio error en ft_check_border\n");
+	free(line);
+	data->test_map = ft_split(new_line, ' ');
+	data->run_map = ft_split(new_line, ' ');
+	if (data->test_map == NULL || data->run_map == NULL)
 		return (-1);
-	}
-	
-	
-    return(0);    
+	free(new_line);
+	print_map(data->test_map);
+	exit(0);
+	return(0);
 }
 
 
