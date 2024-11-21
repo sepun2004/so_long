@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2024/11/19 21:25:41 by sepun            ###   ########.fr       */
+/*   Updated: 2024/11/21 17:00:18 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 int ft_check_map(char **argv)
 {
-    if (ft_read_map(argv) == -1)
+	int fd;
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		printf("dio error en open\n");
+		return (-1);
+	}
+    if (ft_read_map(fd) == -1)
     {
 		printf("dio error en ft_read_map\n");
         return (-1);
@@ -66,14 +74,7 @@ int	ft_check_border(char **argv)
 				printf("No es un mapa valido////\n");
 				return (-1);
 			}
-			// else if (line[1] != '1' && line[j - 1] != 1)
-			// {
-			// 	printf("No es un mapa valido----\n");
-			// 	return (-1);
-			// }
-			
 			i++;
-			
 		}
 		k++;
 		free(line);
