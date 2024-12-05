@@ -14,6 +14,7 @@ RM = rm -f
 
 SOURCES =	so_long.c\
 			check_map.c\
+			parce_map.c\
 
 SRCS = $(addprefix source/, $(SOURCES))
 
