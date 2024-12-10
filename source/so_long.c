@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:11 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/05 16:56:05 by sepun            ###   ########.fr       */
+/*   Updated: 2024/12/10 18:24:27 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int main(int argc, char **argv)
 {
-	// int result;
-	t_data *data;
-
+	t_map *map;
+	// t_data *data;
+	
 	if (argc > 2)
 	{
 		ft_printf("Error\n");
@@ -28,17 +28,9 @@ int main(int argc, char **argv)
 		ft_printf("No es un archivo .ber\n");
 		return(-1);
 	}
-	data = ft_calloc(1, sizeof(t_data));
-	if (!data)
-		return (0);
-	
-	if (ft_check_map(data, argv))
-	{
-		ft_printf("No es un mapa valido\n");
-		return (-1);
-	}
-	
-	// printf("ft_check_map es %d\n", result);
+	map = ft_calloc(sizeof(t_map), 1);
+	ft_check_map(map, argv);
+
 	return (0);
 } 
 

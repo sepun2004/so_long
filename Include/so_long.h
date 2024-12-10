@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:00 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/05 16:09:01 by sepun            ###   ########.fr       */
+/*   Updated: 2024/12/06 23:35:18 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,26 @@ typedef struct s_map
 	int map_x;
 	int map_y;
 	int coins;
+	char **test_map;
+	char **run_map;
 }               t_map;
 
 typedef struct s_data
 {
+	// void	mlx;
 	t_map	*map;
-	char	**test_map;
-	char	**run_map;
+	
 }			t_data;
 
-//Parceo
-int		ft_check_map(t_data *data, char **argv);
-int		ft_check_long_map(char **argv);
-int		ft_read_map(char **argv);
-int		ft_check_border(char **argv);
-void	is_ordered(t_list *stack_a);
-//
-int ft_check_char(t_data *data);
 
-int parce_map(t_data *data);
+void    ft_check_map(t_map *map, char **argv);
+void    parce_map(t_map *map);
+void    ft_check_objects(t_map *test_map);
+void    ft_check_long_map(t_map *test_map);
+void    ft_printf_error(char *str);
+int     ft_check_ber(char **argv);
+void	print_map(char **map);
+int ft_strelen_char_doble_puntero(char **str);
 
-//
-void print_map(char **map);
-//
-int ft_check_ber(char **argv);
-int ft_count_elements(char **argv);
 
-// int ft_chek_ber(char **argv);
-
-// int ft_count_elements(char **argv);
-int		main(int argc, char **argv);
 
