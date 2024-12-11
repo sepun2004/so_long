@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:00 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/06 23:35:18 by sepun            ###   ########.fr       */
+/*   Updated: 2024/12/11 19:28:42 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,16 @@ typedef struct s_data
 void    ft_check_map(t_map *map, char **argv);
 void    parce_map(t_map *map);
 void    ft_check_objects(t_map *test_map);
+void	ft_check_rectangle_map(t_map *game);
 void    ft_check_long_map(t_map *test_map);
+void	ft_check_border(t_map *game);
 void    ft_printf_error(char *str);
 int     ft_check_ber(char **argv);
 void	print_map(char **map);
 int ft_strelen_char_doble_puntero(char **str);
+
+
+
 
 
 
