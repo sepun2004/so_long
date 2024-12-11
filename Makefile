@@ -10,7 +10,9 @@ CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -f
 
-# LIBMLX	= ../MLX42/lib/MLX42
+# LIBMLX	= ./mlx/lib/MLX42
+
+# LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SOURCES =	so_long.c\
 			check_map.c\
