@@ -10,18 +10,15 @@ CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -f
 
-# LIBMLX	= ./mlx/lib/MLX42
-
-# LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+# LIBMLX = ./mlx/MLX42
+# LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SOURCES =	so_long.c\
 			check_map.c\
 			parce_map.c\
 
 SRCS = $(addprefix source/, $(SOURCES))
-
 SRC = $(SRCS)
-
 OBJ = $(SRC:.c=.o)
 
 all: show_progress $(NAME)
@@ -29,7 +26,9 @@ all: show_progress $(NAME)
 $(NAME):  $(OBJ)
 	@make -s -C libft
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft -lft
+# @cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 	@echo "$(GREEN)It has been compiled, have a nice day.👍$(NC)";
+
 
 # libmlx:
 # 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
