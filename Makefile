@@ -6,12 +6,12 @@ TOTAL_FILES = $(words $(SRC))
 NAME = so_long
 
 CC = gcc -g3
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = #-Wall -Werror -Wextra 
 
 RM = rm -f
 
-# LIBMLX = ./mlx/MLX42
-# LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIBMLX = ./MLX42
+LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SOURCES =	so_long.c\
 			check_map.c\
@@ -25,13 +25,12 @@ all: show_progress $(NAME)
 
 $(NAME):  $(OBJ)
 	@make -s -C libft
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft -lft
-# @cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@cmake  $(LIBMLX) -B $(LIBMLX)/build
+	@make -C $(LIBMLX)/build -j4
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBS) -L libft -lft 
 	@echo "$(GREEN)It has been compiled, have a nice day.👍$(NC)";
 
 
-# libmlx:
-# 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 
 %.o: %.c
@@ -53,11 +52,14 @@ git:
 clean: 
 	@$(RM) $(OBJ)
 	@make  clean -s -C libft
+	@make clean -C $(LIBMLX)/build
+
 
 fclean: clean
 # rm -f $(NAME)
 	@rm -f $(NAME)
 	@make fclean -s -C libft
+# @make fclean -C $(LIBMLX)/build -j4
 	@echo "$(RED)Full Cleaning...$(NC)"
 	@echo "$(RED)Full Cleaned!$(NC)"
 

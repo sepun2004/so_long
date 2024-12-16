@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:00 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/11 21:51:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/16 18:22:57 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "../libft/libft.h"
+#include "../MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_map
 {
@@ -29,7 +30,7 @@ typedef struct s_map
 
 typedef struct s_data
 {
-	// void	mlx;
+	// mlx_t	*mlx;
 	t_map	*map;
 	
 }			t_data;

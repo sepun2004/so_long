@@ -21,9 +21,8 @@ void    ft_check_rectangle_map(t_map *game)
     i = -1;
     while(game->test_map[++i])
     {
-        if (ft_strlen(game->test_map[i]) != (size_t)game->map_x)
-            ft_printf_error("Error\n Map isn't rectangle\n");
-        i++;
+		if ((size_t)game->map_x != ft_strlen(game->test_map[i]))
+			ft_printf_error("Error\nNot valid rectangle map\n");
     }
     game->map_y = i;
 }
@@ -41,11 +40,11 @@ void    ft_check_border(t_map *game)
             x = -1;
             while (game->test_map[y][++x])
                 if (game->test_map[y][x] != '1')
-                    ft_printf_error("Error\n Not valid border\n");
+                    ft_printf_error("Error\nNot valid border\n");
         }
         else
             if (game->test_map[y][0] != '1' || game->test_map[y][game->map_x - 1] != '1')
-                ft_printf_error("Error\n Not valid border\n");
+                ft_printf_error("Error\nNot valid border\n");
     }
 }
 

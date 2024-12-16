@@ -3,22 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:11 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/11 21:51:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/16 19:02:53 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <stdio.h> 
 #include "../Include/so_long.h"
 
+void ft_init() //Esta funcion debe generar a ventada
+{
+	mlx_t *mlx;
+	
+	if (!(mlx = mlx_init(800, 600, "so_long", true)))
+	{
+		ft_printf_error("Error\nNo se pudo inicializar mlx\n");
+	}
+	
+	mlx_loop(mlx);
+	
+}
+
 int main(int argc, char **argv)
 {
 	t_map *map;
-	// t_data *data;
 	
-	// map = NULL;
 	if (argc > 2)
 	{
 		ft_printf("Error\n");
@@ -30,11 +41,7 @@ int main(int argc, char **argv)
 		return(-1);
 	}
 	map = ft_calloc(sizeof(t_map), 1);
-	//map = NULL;
 	ft_check_map(map, argv);
-
+	ft_init();
 	return (0);
-} 
-
-
-
+}

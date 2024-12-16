@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/11 21:53:09 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/16 18:50:36 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    ft_check_map(t_map *map, char **argv)
     new_line = ft_strdup("");
     fd = open(argv[1], O_RDONLY);
     if (fd == -1)
-        ft_printf_error("Error\n No se pudo abrir el archivo\n");
+        ft_printf_error("Error\nNo se pudo abrir el archivo\n");
     line = get_next_line(fd);
     while (line != NULL)
     {
@@ -33,11 +33,10 @@ void    ft_check_map(t_map *map, char **argv)
     map->test_map = ft_split(new_line, '\n');
     map->run_map = ft_split(new_line, '\n');
     if (map->test_map == NULL || map->run_map == NULL)
-        ft_printf_error("Error\n No se pudo dividir el mapa\n");
+        ft_printf_error("Error\nNo se pudo dividir el mapa\n");
     free(new_line);
     print_map(map->test_map);
     parce_map(map);
-
 }
 
 void    parce_map(t_map *map)
