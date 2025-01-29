@@ -5,13 +5,13 @@ CURRENT_FILE = 0
 TOTAL_FILES = $(words $(SRC))
 NAME = so_long
 
-CC = gcc -g3
-CFLAGS = #-Wall -Werror -Wextra 
+CC = gcc -g3 #-fsanitize=address 
+CFLAGS = -Wall -Werror -Wextra 
 
 RM = rm -f
 
 LIBMLX = ./MLX42
-LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm 
 
 SOURCES =	so_long.c\
 			check_map.c\

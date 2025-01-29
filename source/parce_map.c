@@ -12,7 +12,7 @@
 
 #include "../Include/so_long.h"
 
-void    ft_check_rectangle_map(t_map *game)
+void    ft_check_rectangle_map(t_data *game)
 {
     int i;
 	
@@ -27,7 +27,7 @@ void    ft_check_rectangle_map(t_map *game)
     game->map_y = i;
 }
 
-void    ft_check_border(t_map *game)
+void    ft_check_border(t_data *game)
 {
     int x;
     int y;
@@ -48,7 +48,7 @@ void    ft_check_border(t_map *game)
     }
 }
 
-void    ft_check_objects(t_map *test_map)
+void    ft_check_objects(t_data *test_map)
 {
     int p;
     int e;

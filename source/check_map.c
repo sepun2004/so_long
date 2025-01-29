@@ -6,13 +6,13 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2024/12/16 18:50:36 by sepun            ###   ########.fr       */
+/*   Updated: 2025/01/29 21:04:27 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/so_long.h"
 
-void    ft_check_map(t_map *map, char **argv)
+void    ft_check_map(t_data *map, char **argv)
 {
     int     fd;
     char    *line;
@@ -39,7 +39,7 @@ void    ft_check_map(t_map *map, char **argv)
     parce_map(map);
 }
 
-void    parce_map(t_map *map)
+void    parce_map(t_data *map)
 {
     ft_check_objects(map);
     ft_check_rectangle_map(map);
