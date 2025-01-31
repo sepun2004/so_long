@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2025/01/29 21:04:27 by sepun            ###   ########.fr       */
+/*   Updated: 2025/01/31 20:43:48 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void    ft_check_map(t_data *map, char **argv)
     if (map->test_map == NULL || map->run_map == NULL)
         ft_printf_error("Error\nNo se pudo dividir el mapa\n");
     free(new_line);
-    print_map(map->test_map);
     parce_map(map);
 }
 
@@ -44,7 +43,6 @@ void    parce_map(t_data *map)
     ft_check_objects(map);
     ft_check_rectangle_map(map);
     ft_check_border(map);
-    
 }
 
 void    ft_printf_error(char *str)

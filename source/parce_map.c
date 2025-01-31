@@ -66,10 +66,13 @@ void    ft_check_objects(t_data *test_map)
         {
             if (test_map->test_map[y][x] == 'C')
                 test_map->coins++;
-            if (test_map->test_map[y][x] == 'E')
+            else if (test_map->test_map[y][x] == 'E')
                 e++;
-            if (test_map->test_map[y][x] == 'P')
+            else if (test_map->test_map[y][x] == 'P')
                 p++;
+			// else
+			// 	ft_printf_error("Error\nNot valid objects in check_objects\n");
+			
         }
     }
     if (test_map->coins < 1 || e != 1 || p != 1)
@@ -90,4 +93,13 @@ int     ft_check_ber(char **argv)
 		return (-1);
 	}
 	return (0);
+}
+
+void	floof_fill(t_data *game)
+{
+	if (game.)
+	{
+		/* code */
+	}
+	
 }
