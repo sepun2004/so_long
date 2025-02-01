@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2025/01/31 20:43:48 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/01 22:08:41 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    ft_check_map(t_data *map, char **argv)
     if (fd == -1)
         ft_printf_error("Error\nNo se pudo abrir el archivo\n");
     line = get_next_line(fd);
-    while (line != NULL)
+    while (line)
     {
         new_line = ft_strjoin(new_line, line);
         free(line);
@@ -40,9 +40,18 @@ void    ft_check_map(t_data *map, char **argv)
 
 void    parce_map(t_data *map)
 {
+	int coins;
+
+	coins = 0;
     ft_check_objects(map);
     ft_check_rectangle_map(map);
     ft_check_border(map);
+	locate_player(map);
+	printf("player_x: %d, player_y: %d\n", map->player_x, map->player_y);
+	coins = map->coins;
+	// printf("player_x: %d, player_y: %d\n", map->player_x, map->player_y);
+	flood_fill(map, map->player_x, map->player_y);
+	map->coins = coins;
 }
 
 void    ft_printf_error(char *str)
@@ -51,11 +60,30 @@ void    ft_printf_error(char *str)
     exit(1);
 }
 
-void    print_map(char **map)
-{
-    int i;
+// void    print_map(char **map)
+// {
+//     int i;
 
-    i = -1;
-    while (map[++i] != NULL)
-        ft_printf("%s\n", map[i]);
-}
+//     i = -1;
+//     while (map[++i] != NULL)
+//         ft_printf("%s\n", map[i]);
+// }
+
+void print_map(t_data *map)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (map->run_map[y])
+	{
+		x = 0;
+		while (map->run_map[y][x])
+		{
+			ft_printf("%c", map->run_map[y][x]);
+			x++;
+		}
+		ft_printf("\n");
+		y++;
+	}
+}	

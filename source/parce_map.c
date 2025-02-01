@@ -70,9 +70,6 @@ void    ft_check_objects(t_data *test_map)
                 e++;
             else if (test_map->test_map[y][x] == 'P')
                 p++;
-			// else
-			// 	ft_printf_error("Error\nNot valid objects in check_objects\n");
-			
         }
     }
     if (test_map->coins < 1 || e != 1 || p != 1)
@@ -95,11 +92,33 @@ int     ft_check_ber(char **argv)
 	return (0);
 }
 
-void	floof_fill(t_data *game)
+void	flood_fill(t_data *game, int x, int y)
 {
-	if (game.)
-	{
-		/* code */
-	}
-	
+	// printf("x es %d\n", x);
+	// printf("y es %d\n", y);
+	// printf("--------------------\n");
+	if (game->test_map[x][y] == '1' || game->test_map[x][y] == 'X')
+		return ;
+	if (game->test_map[x][y] == 'C')
+		game->coins--;
+	if (game->test_map[x][y] == 'E' && game->coins != 0)
+		return ;
+	game->test_map[x][y] = 'X';
+	flood_fill(game, x - 1, y);
+	flood_fill(game, x + 1, y);
+	flood_fill(game, x, y - 1);
+	flood_fill(game, x, y + 1);
 }
+
+// void free_map(t_data *game)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i < game->map_y)
+// 	{
+// 		free(game->test_map[i]);
+// 		i++;
+// 	}
+// 	free(game->test_map);
+// }

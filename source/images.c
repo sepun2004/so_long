@@ -44,8 +44,6 @@ void convert_texture_to_image(t_data *s_data, mlx_t *mlx)
 
 void img_to_window(mlx_t *mlx, mlx_image_t *img, int i, int j)
 {
-	// printf("i: %d, j: %d\n", i, j);
-	// printf("Ingreso \n");
 	if (mlx_image_to_window(mlx, img, i, j) < 0)
 		ft_printf_error("Error: No se pudo convertir la imagen a ventana.");
 	
@@ -58,10 +56,10 @@ void ft_texture(t_data *map, mlx_t *mlx)
 	load_textures(map);
 	convert_texture_to_image(map, mlx);
 	i = 0;
-	while (i < map->map_y)
+	while (i < map->map_x)
 	{
 		j = 0;
-		while (j < map->map_x)
+		while (j < map->map_y)
 		{
 			//printf("----i: %d, j: %d----\n", i, j);
 			//printf("map->run_map[i][j]: %c\n", map->run_map[i][j]);
@@ -69,8 +67,6 @@ void ft_texture(t_data *map, mlx_t *mlx)
 				img_to_window(mlx, map->texture->wall_texture, j * 50, i * 50);
 			else if (map->run_map[i][j] == '0')
 				img_to_window(mlx, map->texture->backgound_texture, j * 50, i * 50);
-			else if (map->run_map[i][j] == 'P')
-				img_to_window(mlx, map->texture->player_texture,j * 50,i * 50);
 			else if (map->run_map[i][j] == 'C')
 				img_to_window(mlx, map->texture->collectible_texture,j * 50,i * 50);
 			else if (map->run_map[i][j] == 'E')
@@ -79,4 +75,11 @@ void ft_texture(t_data *map, mlx_t *mlx)
 		}
 		i++;
 	}
+	draw_player(map, mlx);
+}
+
+void draw_player(t_data *map, mlx_t *mlx)
+{
+	if (mlx_image_to_window(mlx, map->texture->player_texture, map->player_x * 50, map->player_y * 50) < 0)
+		ft_printf_error("Error: No se pudo convertir la imagen a ventana.");
 }
