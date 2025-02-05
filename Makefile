@@ -5,17 +5,20 @@ CURRENT_FILE = 0
 TOTAL_FILES = $(words $(SRC))
 NAME = so_long
 
-CC = gcc -g3 #-fsanitize=address 
+CC = gcc -g3 -fsanitize=address 
 CFLAGS = -Wall -Werror -Wextra 
 
 RM = rm -f
 
 LIBMLX = ./MLX42
-LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm 
+LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SOURCES =	so_long.c\
 			check_map.c\
 			parce_map.c\
+			move.c\
+			images.c\
+			free_map.c\
 
 SRCS = $(addprefix source/, $(SOURCES))
 SRC = $(SRCS)
@@ -54,6 +57,8 @@ clean:
 	@make  clean -s -C libft
 	@make clean -C $(LIBMLX)/build
 
+norm:
+	norminette $(SRC) ./includes/so_long.h
 
 fclean: clean
 # rm -f $(NAME)
