@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:49:02 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/05 21:23:51 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:35:22 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	nothing(t_data *map, int pos_x, int pos_y)
 	map->player_y = pos_y;
 	img_to_window(map->mlx, map->texture->player_texture,
 		pos_y * 50, pos_x * 50);
-	map->count_moves++;
+	map->count_moves++; 
 }
 
 void	ft_move(mlx_t *mlx, t_data *map)
@@ -68,4 +68,5 @@ void	all_move(t_data *map, int pos_x, int pos_y)
 		exit_check(map, pos_x, pos_y);
 	else
 		nothing(map, pos_x, pos_y);
+	ft_printf("Count moves: %d\n", map->count_moves);
 }

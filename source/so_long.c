@@ -6,11 +6,19 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:11 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/05 22:16:04 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:43:06 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/so_long.h"
+
+static void	verification_arg(int argc, char **argv)
+{
+	if (argc > 2)
+		ft_printf_error("Error\nDemasiados argumentos\n");
+	if (argc == 2 && ft_check_ber(argv) == -1)
+		ft_printf_error("Error\nNo es un archivo .ber\n");
+}
 
 void	free_and_print_error(t_data *game, char *error)
 {
@@ -59,18 +67,19 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		&& keydata.action == MLX_PRESS)
 		all_move(map, map->player_x, map->player_y + 1);
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
 		free_struct(map);
-	draw_player(map, map->mlx);
+		return ;
+	}
+	draw_player(map, map->mlx);	
+	// ft_printf("-------");
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	*map;
 
-	if (argc > 2)
-		ft_printf_error("Error\nDemasiados argumentos\n");
-	if (argc == 2 && ft_check_ber(argv) == -1)
-		ft_printf_error("Error\nNo es un archivo .ber\n");
+	verification_arg(argc, argv);
 	map = ft_calloc(sizeof(t_data), 1);
 	if (!map)
 		free_struct(map);
@@ -78,15 +87,22 @@ int	main(int argc, char **argv)
 	ft_check_map(map, argv);
 	if (map->check == 0)
 		free_struct(map);
+	printf("map->map_x: %d\n", map->map_x);
+	printf("map->map_y: %d\n", map->map_y);
+	if ((map->map_x * 50) > MAX_MAP_X || (map->map_y * 50) > MAX_MAP_Y)
+	{
+		ft_printf_error("Error\nMapa demasiado grande\n");
+		free_struct(map);
+	}
 	map->mlx = mlx_init(map->map_x * 50, map->map_y * 50, "so_long", true);
 	if (!map->mlx)
 		free_struct(map);
 	locate_player(map);
-	map->text = 0;
 	ft_texture(map, map->mlx);
+	// exit(1);
 	if (!map->texture)
 		free_struct(map);
-	map->text = 1;
 	ft_move(map->mlx, map);
+	//free_struct(map);
 	return (0);
 }

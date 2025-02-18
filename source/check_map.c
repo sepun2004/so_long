@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:54:23 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/05 21:06:30 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/13 19:34:09 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ void	parce_map(t_data *map)
 	flood_fill(map, map->player_x, map->player_y);
 	while (map->test_map[i])
 	{
-		if (ft_strchr(map->test_map[i], 'E') != 0)
+		printf("%s\n", map->test_map[i]);
+		if (ft_strchr(map->test_map[i], 'E') != NULL)
 		{
+			printf("resultado de ft_strchr: %s\n", ft_strchr(map->test_map[i], 'E'));
 			ft_printf("Error\nNo hay salida\n");
 			free_struct(map);
 		}
