@@ -73,7 +73,7 @@ void	ft_check_objects(t_data *test_map)
 		}
 	}
 	if (test_map->coins < 1 || e != 1 || p != 1)
-		ft_printf_error("Error\nNot valid objects in check_objects\n");
+		free_and_print_error(test_map, "Error\nNot valid objects\n");
 }
 
 int	ft_check_ber(char **argv)

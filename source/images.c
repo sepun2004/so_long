@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:57:10 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 17:06:00 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 17:31:25 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_texture(t_data *map, mlx_t *mlx)
 
 	load_textures(map);
 	convert_texture_to_image(map, mlx);
-	exit(1);
+	// exit(1);
 	i = -1;
 	while (map->run_map[++i] != NULL)
 	{

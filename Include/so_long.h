@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:00 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 20:17:55 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:31:07 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	parce_map(t_data *map);
 
 //PARCE_MAP
 void	ft_check_map(t_data *map, char **argv);
-void	ft_check_objects(t_data *test_map, int i);
+void	ft_check_objects(t_data *test_map);
 void	ft_check_rectangle_map(t_data *game);
 void	ft_check_border(t_data *game);
 void	locate_player(t_data *map);
