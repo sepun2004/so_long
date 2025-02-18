@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:57:10 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 17:31:25 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:53:02 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,16 @@
 
 void	load_textures(t_data *game)
 {
-	// void	*tmp;
-
-	// tmp = NULL;
-
 	if (!game)
 		free_struct(game);
 	game->texture = ft_calloc(sizeof(t_texture), 1);
 	if (!game->texture)
 		free_struct(game);
-	// tmp = game->texture->wall_texture;
 	game->texture->wall_texture = mlx_load_png("textures/wall.png");
-	// printf("background: %p\n", game->texture->wall_texture);
-	// printf("background: %p\n", tmp);
-	// mlx_delete_image(game->mlx, tmp);
-	// free(tmp);
-	// tmp = game->texture->backgound_texture;
 	game->texture->backgound_texture = mlx_load_png("textures/background.png");
-	
-	// mlx_delete_image(game->mlx, tmp);
-	// free(tmp);
-	// tmp = game->texture->player_texture;
 	game->texture->player_texture = mlx_load_png("textures/player.png");
-	// mlx_delete_image(game->mlx, tmp);
-	// free(tmp);
-	// tmp = game->texture->collectible_texture;
 	game->texture->collectible_texture = mlx_load_png("textures/coins.png");
-	// mlx_delete_image(game->mlx, tmp);
-	// free(tmp);
-	// tmp = game->texture->exit_texture;
 	game->texture->exit_texture = mlx_load_png("textures/exit_final.png");
-	// mlx_delete_image(game->mlx, tmp);
-	// free(tmp);
-	if (!game->texture->wall_texture || !game->texture->backgound_texture
-		|| !game->texture->player_texture || !game->texture->collectible_texture
-		|| !game->texture->exit_texture)
-		free_struct(game);
 	check_convert_texture_to_image(game);
 }
 
@@ -80,12 +54,6 @@ void	convert_texture_to_image(t_data *s_data, mlx_t *mlx)
 	s_data->texture->exit_texture = mlx_texture_to_image(mlx,
 			s_data->texture->exit_texture);
 	mlx_delete_texture(img);
-	if (!s_data->texture->wall_texture ||
-		 !s_data->texture->backgound_texture
-		 || !s_data->texture->player_texture
-		 || !s_data->texture->collectible_texture
-		 || !s_data->texture->exit_texture)	
-		free_struct(s_data);
 	check_convert_texture_to_image(s_data);
 }
 
@@ -102,7 +70,6 @@ void	ft_texture(t_data *map, mlx_t *mlx)
 
 	load_textures(map);
 	convert_texture_to_image(map, mlx);
-	// exit(1);
 	i = -1;
 	while (map->run_map[++i] != NULL)
 	{

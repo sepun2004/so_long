@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:11 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 20:30:33 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:54:28 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		free_struct(map);
 		return ;
 	}
-	draw_player(map, map->mlx);	
-	// ft_printf("-------");
+	draw_player(map, map->mlx);
 }
 
 int	main(int argc, char **argv)
@@ -87,22 +86,15 @@ int	main(int argc, char **argv)
 	ft_check_map(map, argv);
 	if (map->check == 0)
 		free_struct(map);
-	printf("map->map_x: %d\n", map->map_x);
-	printf("map->map_y: %d\n", map->map_y);
 	if ((map->map_x * 50) > MAX_MAP_X || (map->map_y * 50) > MAX_MAP_Y)
-	{
-		ft_printf_error("Error\nMapa demasiado grande\n");
-		free_struct(map);
-	}
+		free_and_print_error(map, "Error\nMapa demasiado grande\n");
 	map->mlx = mlx_init(map->map_x * 50, map->map_y * 50, "so_long", true);
 	if (!map->mlx)
 		free_struct(map);
 	locate_player(map);
 	ft_texture(map, map->mlx);
-	// exit(1);
 	if (!map->texture)
 		free_struct(map);
 	ft_move(map->mlx, map);
-	//free_struct(map);
 	return (0);
 }

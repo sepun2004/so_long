@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 20:59:22 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 20:30:42 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:52:22 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,11 @@ void	free_texture(t_texture *texture, mlx_t *mlx)
 {
 	if (!texture)
 		return ;
-	// (void)texture;
 	mlx_delete_image(mlx, texture->wall_texture);
 	mlx_delete_image(mlx, texture->backgound_texture);
 	mlx_delete_image(mlx, texture->player_texture);
 	mlx_delete_image(mlx, texture->collectible_texture);
 	mlx_delete_image(mlx, texture->exit_texture);
-	// mlx_delete_image(mlx, texture->wall_texture);
-	// mlx_delete_image(mlx, texture->backgound_texture);
-	// mlx_delete_image(mlx, texture->player_texture);
-	// mlx_delete_image(mlx, texture->collectible_texture);
-	// mlx_delete_image(mlx, texture->exit_texture);
-	// if (!texture)
-	// 	return ;
-	// (void)mlx;
-	// // Verificamos que cada textura no sea NULL antes de eliminarla
-	// if (texture->wall_texture)
-	// 	mlx_delete_texture(texture->wall_texture);
-	// if (texture->backgound_texture)
-	// 	mlx_delete_texture(texture->backgound_texture);
-	// if (texture->player_texture)
-	// 	mlx_delete_texture(texture->player_texture);
-	// if (texture->collectible_texture)
-	// 	mlx_delete_texture(texture->collectible_texture);
-	// if (texture->exit_texture)
-	// 	mlx_delete_texture(texture->exit_texture);
 }
 
 void	free_struct(t_data *map)
@@ -74,12 +54,10 @@ void	free_struct(t_data *map)
 	}
 	if (map->run_map || map->test_map)
 		free_map(map);
-		// }
 	if (map->mlx)
 	{
 		mlx_close_window(map->mlx);
 		mlx_terminate(map->mlx);
-		// free(map->mlx);
 	}
 	if (map)
 		free(map);
