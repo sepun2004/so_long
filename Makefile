@@ -5,7 +5,7 @@ CURRENT_FILE = 0
 TOTAL_FILES = $(words $(SRC))
 NAME = so_long
 
-CC = gcc -g3 -fsanitize=address 
+CC = gcc -g3 #-fsanitize=address 
 CFLAGS = -Wall -Werror -Wextra 
 
 RM = rm -f
