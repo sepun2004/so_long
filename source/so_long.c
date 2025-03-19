@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:11 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 20:54:28 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/28 23:04:26 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	verification_arg(int argc, char **argv)
 {
 	if (argc > 2)
-		ft_printf_error("Error\nDemasiados argumentos\n");
+		ft_printf_error("Error\nToo many arguments\n");
 	if (argc == 2 && ft_check_ber(argv) == -1)
-		ft_printf_error("Error\nNo es un archivo .ber\n");
+		ft_printf_error("Error\nThe file could not be executed\n");
 }
 
 void	free_and_print_error(t_data *game, char *error)
@@ -85,7 +85,10 @@ int	main(int argc, char **argv)
 	map->check = 0;
 	ft_check_map(map, argv);
 	if (map->check == 0)
+	{
+		ft_printf("Error\ningreso aqui \n");
 		free_struct(map);
+	}
 	if ((map->map_x * 50) > MAX_MAP_X || (map->map_y * 50) > MAX_MAP_Y)
 		free_and_print_error(map, "Error\nMapa demasiado grande\n");
 	map->mlx = mlx_init(map->map_x * 50, map->map_y * 50, "so_long", true);

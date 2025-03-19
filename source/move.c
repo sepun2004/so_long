@@ -6,7 +6,7 @@
 /*   By: sepun <sepun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:49:02 by sepun             #+#    #+#             */
-/*   Updated: 2025/02/18 20:49:54 by sepun            ###   ########.fr       */
+/*   Updated: 2025/02/28 23:03:28 by sepun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	exit_check(t_data *map, int pos_x, int pos_y)
 	{
 		map->run_map[pos_x][pos_y] = 'E';
 		map->run_map[map->player_x][map->player_y] = 'P';
-		ft_printf("No puedes salir sin recolectar todas las monedas\n");
+		ft_printf("You can't leave without collecting all the coins\n");
 	}
 }
 

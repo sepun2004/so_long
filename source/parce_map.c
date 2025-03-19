@@ -12,6 +12,19 @@
 
 #include "../Include/so_long.h"
 
+// static void print_map(t_data *game)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (game->test_map[i])
+// 	{
+// 		ft_printf("%s\n", game->test_map[i]);
+// 		i++;
+// 	}
+// 	ft_printf("\n");
+// }	
+
 void	ft_check_rectangle_map(t_data *game)
 {
 	int	i;
@@ -81,7 +94,7 @@ int	ft_check_ber(char **argv)
 	int	j;
 
 	j = ft_strlen(argv[1]);
-	if (j < 4)
+	if (j < 5)
 		return (-1);
 	if (argv[1][j - 1] != 'r' && argv[1][j - 2] != 'e'
 		&& argv[1][j - 3] != 'b' && argv[1][j - 4] != '.')
@@ -91,12 +104,13 @@ int	ft_check_ber(char **argv)
 
 void	flood_fill(t_data *game, int x, int y)
 {
-	if (game->test_map[x][y] == '1' || game->test_map[x][y] == 'X' )
+	if (game->test_map[x][y] == '1' || game->test_map[x][y] == 'X')
 		return ;
 	if (game->test_map[x][y] == 'C')
 		game->coins--;
 	if (game->test_map[x][y] == 'E' && game->coins != 0)
 	{
+		game->test_map[x][y] = 'X';
 		game->check = 1;
 		return ;
 	}
